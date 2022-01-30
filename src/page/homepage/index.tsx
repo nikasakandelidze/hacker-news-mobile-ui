@@ -20,7 +20,7 @@ export const HomePage = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {stories.map((story: Story) => (
-          <StoryView story={story} />
+          <StoryView key={story.id} story={story} />
         ))}
       </ScrollView>
     </SafeAreaView>

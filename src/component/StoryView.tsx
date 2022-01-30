@@ -24,7 +24,7 @@ const StoryView = ({ story }: { story: Story }) => {
       style={styles.container}
       onPress={() => openUrl(story.url)}
     >
-      <View>
+      <View style={styles.titleContainer}>
         <Text style={styles.title}>{story.title}</Text>
       </View>
       <View style={styles.authorContainer}>
@@ -39,15 +39,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
-    height: 110,
+    height: 130,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FF6600",
     marginVertical: 10,
-    padding: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
     borderRadius: 10,
     overflow: "scroll",
   },
+  titleContainer: {},
   title: {
     fontSize: 18,
     fontWeight: "500",
