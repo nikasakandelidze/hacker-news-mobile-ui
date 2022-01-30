@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import StoryView from "../../component/StoryView";
 import { Story } from "../../model";
-import { fetchStories } from "./service";
+import { fetchStories } from "./service/service";
 
 export const HomePage = () => {
   const [stories, setStories] = useState<Array<Story>>([]);
