@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     height: 130,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FF6600",
+    backgroundColor: "white",
     marginVertical: 10,
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
   },
   author: {
     fontSize: 15,
-    color: "white",
     fontWeight: "500",
   },
 });

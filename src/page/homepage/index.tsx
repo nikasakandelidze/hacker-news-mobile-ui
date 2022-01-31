@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { SafeAreaView, ScrollView, StyleSheet, View, Text } from "react-native";
 import StoryView from "../../component/StoryView";
 import { Story } from "../../model";
 import { fetchStories } from "./service/service";
@@ -18,6 +18,9 @@ export const HomePage = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>YCombinator News</Text>
+      </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {stories.map((story: Story) => (
           <StoryView key={story.id} story={story} />
@@ -32,8 +35,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
-    backgroundColor: "#F6F6EF",
+    backgroundColor: "#DAE7EF",
   },
+  titleContainer: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 10,
+  },
+  title: { fontSize: 35, fontWeight: "800", color: "#FF6600" },
   scrollContainer: {
     justifyContent: "center",
     alignItems: "center",
