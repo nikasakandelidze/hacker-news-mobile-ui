@@ -6,9 +6,9 @@ import {
   Linking,
 } from "react-native";
 import React from "react";
-import { Story } from "../model/index";
+import { Job } from "../model/index";
 
-const StoryView = ({ story }: { story: Story }) => {
+const JobView = ({ job }: { job: Job }) => {
   const openUrl = async (url: string) => {
     const supported = await Linking.canOpenURL(url);
 
@@ -20,16 +20,13 @@ const StoryView = ({ story }: { story: Story }) => {
   };
 
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={() => openUrl(story.url)}
-    >
+    <TouchableOpacity style={styles.container} onPress={() => openUrl(job.url)}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{story.title}</Text>
+        <Text style={styles.title}>{job.title}</Text>
       </View>
       <View style={styles.authorContainer}>
-        <Text style={styles.author}>By: {story.author}</Text>
-        <Text style={styles.author}>Score: {story.score}</Text>
+        <Text style={styles.author}>By: {job.author}</Text>
+        <Text style={styles.author}>Score: {job.score}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -63,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StoryView;
+export default JobView;

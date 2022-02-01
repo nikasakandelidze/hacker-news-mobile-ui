@@ -18,9 +18,9 @@ export const HomePage = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.titleContainer}>
+      {/* <View style={styles.titleContainer}>
         <Text style={styles.title}>YCombinator News</Text>
-      </View>
+      </View> */}
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {stories.map((story: Story) => (
           <StoryView key={story.id} story={story} />
