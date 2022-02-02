@@ -5,18 +5,31 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-type Props = {};
+const SearchBar = ({
+  toggleFocused,
+  blurred,
+}: {
+  toggleFocused: () => void;
+  blurred: boolean;
+}) => {
+  let inputRef: any = useRef();
+  useEffect(() => {
+    if (blurred && inputRef.current) {
+      inputRef.current.blur();
+    }
+  }, [blurred]);
 
-const SearchBar = (props: Props) => {
   return (
     <View style={styles.container}>
       <TextInput
+        ref={inputRef}
         placeholder="Search"
         style={styles.input}
         keyboardType="default"
+        onFocus={() => toggleFocused()}
       />
       <TouchableOpacity
         onPress={() => Alert.alert("Searching")}
@@ -42,6 +55,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontSize: 23,
     padding: 5,
+  },
+  searchContent: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    zIndex: 2,
+    backgroundColor: "red",
+    width: "100%",
+    height: "100%",
   },
 });
 
