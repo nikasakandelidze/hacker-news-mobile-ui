@@ -1,11 +1,14 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import Main from "./src/Main";
+import { MainContextProvider } from "./src/page/helper/context/MainContextProvider";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Main />
+      <MainContextProvider>
+        <Main />
+      </MainContextProvider>
     </View>
   );
 }
