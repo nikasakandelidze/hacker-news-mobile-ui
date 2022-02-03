@@ -1,12 +1,21 @@
-import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import React, { useContext } from "react";
+import { MainContext } from "../page/helper/context/MainContextProvider";
+import SearchResultView from "./SearchResultView";
 
-type Props = {};
-
-const SearchResult = (props: Props) => {
+const SearchResult = ({ input }: { input: string }) => {
+  const { jobsData, storiesData } = useContext(MainContext);
+  console.log(jobsData);
+  console.log(storiesData);
   return (
     <View style={styles.container}>
-      <Text>Search results</Text>
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        {[...jobsData, ...storiesData]
+          .filter((e) => e.title.includes(input))
+          .map((e) => (
+            <SearchResultView item={e} />
+          ))}
+      </ScrollView>
     </View>
   );
 };
@@ -20,7 +29,11 @@ const styles = StyleSheet.create({
     height: "70%",
     marginTop: 90,
     width: "100%",
-    backgroundColor: "#F6F6F6",
+    backgroundColor: "white",
+  },
+  scrollViewContainer: {
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

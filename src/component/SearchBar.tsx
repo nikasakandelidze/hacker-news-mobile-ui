@@ -11,9 +11,11 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 const SearchBar = ({
   toggleFocused,
   blurred,
+  setInput,
 }: {
   toggleFocused: () => void;
   blurred: boolean;
+  setInput: (data: string) => void;
 }) => {
   let inputRef: any = useRef();
   useEffect(() => {
@@ -30,6 +32,9 @@ const SearchBar = ({
         style={styles.input}
         keyboardType="default"
         onFocus={() => toggleFocused()}
+        onChangeText={(e) => {
+          setInput(e);
+        }}
       />
       <TouchableOpacity
         onPress={() => Alert.alert("Searching")}

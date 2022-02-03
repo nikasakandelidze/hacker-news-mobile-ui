@@ -5,6 +5,8 @@ export interface IMainContext {
   storiesData: Array<Story>;
   setJobsData: any;
   setStoriesData: any;
+  input: string;
+  setInput: any;
 }
 
 export const MainContext = React.createContext<IMainContext>({
@@ -12,11 +14,14 @@ export const MainContext = React.createContext<IMainContext>({
   storiesData: [],
   setJobsData: (data: Array<Job>) => {},
   setStoriesData: (data: Array<Story>) => {},
+  input: "",
+  setInput: (data: string) => {},
 });
 
 export const MainContextProvider = ({ children }: { children: any }) => {
   const [jobs, setJobs] = useState<Array<Job>>([]);
   const [stories, setStories] = useState<Array<Story>>([]);
+  const [input, setInput] = useState("");
 
   return (
     <MainContext.Provider
@@ -25,6 +30,8 @@ export const MainContextProvider = ({ children }: { children: any }) => {
         storiesData: stories,
         setJobsData: setJobs,
         setStoriesData: setStories,
+        input,
+        setInput,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { HomePage } from "./page/homepage";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -8,11 +8,14 @@ import { SafeAreaView, View, Text } from "react-native";
 import SearchBar from "./component/SearchBar";
 import SearchResult from "./component/SearchResult";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MainContext } from "./page/helper/context/MainContextProvider";
 
 const Tab = createBottomTabNavigator();
 
 const Main = () => {
   const [searchFocused, setFocused] = useState(false);
+
+  const { input, setInput } = useContext(MainContext);
 
   return (
     <NavigationContainer>
@@ -38,10 +41,11 @@ const Main = () => {
               setFocused((e) => !e);
             }}
             blurred={!searchFocused}
+            setInput={(e) => setInput(e)}
           />
         </View>
       </SafeAreaView>
-      {searchFocused && <SearchResult />}
+      {searchFocused && <SearchResult input={input} />}
       <Tab.Navigator>
         <Tab.Screen
           name="Home"
