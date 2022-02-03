@@ -1,23 +1,18 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  ActivityIndicator,
-} from "react-native";
-import React, { useEffect, useState } from "react";
+import { View, StyleSheet, ScrollView, ActivityIndicator } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
 import { fetchJobs } from "./service/service";
 import { Job } from "../../model";
 import JobView from "../../component/JobView";
+import { MainContext } from "../helper/context/MainContextProvider";
 
 const Jobs = () => {
-  const [jobs, setJobs] = useState<Array<Job>>([]);
+  const { jobsData: jobs, setJobsData } = useContext(MainContext);
   const [loading, setLoading] = useState<boolean>(false);
 
   const updateJobs = async () => {
     setLoading(true);
     const jobs: Array<Job> = await fetchJobs();
-    setJobs(jobs);
+    setJobsData(jobs);
     setLoading(false);
   };
 

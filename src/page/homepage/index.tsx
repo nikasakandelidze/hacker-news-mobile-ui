@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
   View,
-  Text,
   ActivityIndicator,
 } from "react-native";
 import StoryView from "../../component/StoryView";
 import { Story } from "../../model";
 import { fetchStories } from "./service/service";
+import { MainContext } from "../helper/context/MainContextProvider";
 
 export const HomePage = () => {
-  const [stories, setStories] = useState<Array<Story>>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const { storiesData: stories, setStoriesData } = useContext(MainContext);
   const updateStories = async () => {
     setLoading(true);
     const stories: Array<Story> = await fetchStories();
-    setStories(stories);
+    setStoriesData(stories);
     setLoading(false);
   };
 

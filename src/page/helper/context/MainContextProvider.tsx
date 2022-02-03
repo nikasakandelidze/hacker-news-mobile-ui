@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Job, Story } from "../../../model";
-
 export interface IMainContext {
   jobsData: Array<Job>;
   storiesData: Array<Story>;
@@ -18,6 +17,7 @@ export const MainContext = React.createContext<IMainContext>({
 export const MainContextProvider = ({ children }: { children: any }) => {
   const [jobs, setJobs] = useState<Array<Job>>([]);
   const [stories, setStories] = useState<Array<Story>>([]);
+
   return (
     <MainContext.Provider
       value={{
