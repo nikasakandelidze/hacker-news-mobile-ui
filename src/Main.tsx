@@ -45,7 +45,7 @@ const Main = () => {
           />
         </View>
       </SafeAreaView>
-      {searchFocused && <SearchResult input={input} />}
+      {<SearchResult input={input} show={searchFocused} />}
       <Tab.Navigator>
         <Tab.Screen
           name="Home"

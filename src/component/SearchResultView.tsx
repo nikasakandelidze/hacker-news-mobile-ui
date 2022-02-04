@@ -38,11 +38,11 @@ const SearchResultView = ({ item }: { item: Job }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
     height: 130,
+    width: "95%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2F91FF",
+    backgroundColor: "#EE6A61",
     marginVertical: 10,
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {},
   title: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "700",
     color: "white",
   },
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   author: {
     fontSize: 15,
     fontWeight: "500",
-    color: "white",
+    color: "#516365",
   },
 });
 
