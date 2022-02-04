@@ -51,7 +51,15 @@ const Main = () => {
           name="Home"
           component={HomePage}
           options={{
-            tabBarIcon: ({}) => <Ionicons name="home" size={25} />,
+            tabBarIcon: ({}) => <Ionicons name="home-outline" size={25} />,
+            headerShown: false,
+          }}
+        />
+        <Tab.Screen
+          name="Utils"
+          component={Jobs}
+          options={{
+            tabBarIcon: ({}) => <Ionicons name="settings-outline" size={25} />,
             headerShown: false,
           }}
         />
@@ -59,7 +67,7 @@ const Main = () => {
           name="Jobs"
           component={Jobs}
           options={{
-            tabBarIcon: ({}) => <Ionicons name="settings" size={25} />,
+            tabBarIcon: ({}) => <Ionicons name="wallet-outline" size={25} />,
             headerShown: false,
           }}
         />
