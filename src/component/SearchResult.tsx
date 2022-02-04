@@ -27,7 +27,13 @@ const SearchResult = ({ input, show }: { input: string; show: boolean }) => {
   });
 
   return (
-    <Animated.View style={[styles.container, animationStyle]}>
+    <Animated.View
+      style={[
+        styles.container,
+        animationStyle,
+        show ? { paddingBottom: 20 } : {},
+      ]}
+    >
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         {[...jobsData, ...storiesData]
           .filter((e) => e.title.includes(input))
@@ -48,7 +54,7 @@ const styles = StyleSheet.create({
     height: 0,
     marginTop: 90,
     width: "100%",
-    backgroundColor: "#BDD7D6",
+    backgroundColor: "#6886C5",
   },
   scrollViewContainer: {
     padding: 20,

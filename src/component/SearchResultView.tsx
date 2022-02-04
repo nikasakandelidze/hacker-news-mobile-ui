@@ -27,10 +27,10 @@ const SearchResultView = ({ item }: { item: Job }) => {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{item.title}</Text>
       </View>
-      <View style={styles.authorContainer}>
+      {/* <View style={styles.authorContainer}>
         <Text style={styles.author}>By: {item.author}</Text>
         <Text style={styles.author}>Score: {item.score}</Text>
-      </View>
+      </View> */}
     </TouchableOpacity>
   );
 };
@@ -38,22 +38,23 @@ const SearchResultView = ({ item }: { item: Job }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 130,
-    width: "95%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "100%",
+    height: 50,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#EE6A61",
-    marginVertical: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 10,
+    alignContent: "center",
+    backgroundColor: "white",
+    marginVertical: 7,
+    paddingHorizontal: 5,
     borderRadius: 10,
-    overflow: "scroll",
   },
   titleContainer: {},
   title: {
     fontSize: 17,
     fontWeight: "700",
-    color: "white",
+    color: "black",
   },
   authorContainer: {
     marginVertical: 10,
