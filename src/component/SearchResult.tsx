@@ -3,7 +3,7 @@ import Animated, {
   withTiming,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { StyleSheet, ScrollView } from "react-native";
+import { StyleSheet, ScrollView, Platform } from "react-native";
 import React, { useContext, useEffect } from "react";
 import { MainContext } from "../page/helper/context/MainContextProvider";
 import SearchResultView from "./SearchResultView";
@@ -36,9 +36,9 @@ const SearchResult = ({ input, show }: { input: string; show: boolean }) => {
     >
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         {[...jobsData, ...storiesData]
-          .filter((e) => e.title.includes(input))
+          .filter((e) => e.title.toLowerCase().includes(input.toLowerCase()))
           .map((e) => (
-            <SearchResultView item={e} />
+            <SearchResultView key={e.id} item={e} />
           ))}
       </ScrollView>
     </Animated.View>
@@ -47,12 +47,10 @@ const SearchResult = ({ input, show }: { input: string; show: boolean }) => {
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
-    zIndex: 2,
     justifyContent: "center",
     alignItems: "center",
     height: 0,
-    marginTop: 90,
+    marginTop: Platform.OS == "android" ? 0 : 0,
     width: "100%",
     backgroundColor: "#6886C5",
   },

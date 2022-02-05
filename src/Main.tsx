@@ -4,11 +4,12 @@ import { HomePage } from "./page/homepage";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import Jobs from "./page/jobs";
-import { SafeAreaView, View, Text } from "react-native";
+import { SafeAreaView, View, StyleSheet, Platform } from "react-native";
 import SearchBar from "./component/SearchBar";
 import SearchResult from "./component/SearchResult";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MainContext } from "./page/helper/context/MainContextProvider";
+import UtilsView from "./page/utils";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +20,7 @@ const Main = () => {
 
   return (
     <NavigationContainer>
-      <SafeAreaView style={{ marginVertical: 15 }}>
+      <SafeAreaView style={styles.droidSafeArea}>
         <View
           style={{
             display: "flex",
@@ -57,7 +58,7 @@ const Main = () => {
         />
         <Tab.Screen
           name="Utils"
-          component={Jobs}
+          component={UtilsView}
           options={{
             tabBarIcon: ({}) => <Ionicons name="settings-outline" size={25} />,
             headerShown: false,
@@ -75,5 +76,12 @@ const Main = () => {
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  droidSafeArea: {
+    marginTop: Platform.OS === "android" ? 60 : 0,
+    marginVertical: 15,
+  },
+});
 
 export default Main;
