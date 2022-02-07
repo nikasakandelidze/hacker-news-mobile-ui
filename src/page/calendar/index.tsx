@@ -1,13 +1,14 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Modal from "react-native-modal";
 import React, { useState } from "react";
 import ModalView from "../../component/ModalView";
+import CalendarView from "../../component/CalendarView";
 
-const UtilsView = () => {
+const Calendar = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.container}>
+      <CalendarView />
       <ModalView modalVisible={modalVisible}>
         <View style={styles.modalContainer}>
           <Text>Hi</Text>
@@ -44,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UtilsView;
+export default Calendar;

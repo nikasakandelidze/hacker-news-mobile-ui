@@ -9,7 +9,7 @@ import SearchBar from "./component/SearchBar";
 import SearchResult from "./component/SearchResult";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MainContext } from "./page/helper/context/MainContextProvider";
-import UtilsView from "./page/utils";
+import Calendar from "./page/calendar";
 
 const Tab = createBottomTabNavigator();
 
@@ -57,10 +57,10 @@ const Main = () => {
           }}
         />
         <Tab.Screen
-          name="Utils"
-          component={UtilsView}
+          name="Calendar"
+          component={Calendar}
           options={{
-            tabBarIcon: ({}) => <Ionicons name="settings-outline" size={25} />,
+            tabBarIcon: ({}) => <Ionicons name="calendar-outline" size={25} />,
             headerShown: false,
           }}
         />
