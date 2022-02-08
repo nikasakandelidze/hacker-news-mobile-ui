@@ -1,26 +1,39 @@
 import { View, Text, StyleSheet } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import moment from "moment";
-import CalendarDate from "./CalendarDate";
-import { numberRange } from "../utils";
+import CalendarDateView from "./CalendarDateView";
+import { datesRange, getNumberFromDate } from "../utils";
+import { Story } from "../model";
 
-const CalendarView = () => {
-  const [chosenDay, setChosenDay] = useState(Number(moment().format("D")));
-
-  const start = Number(moment().startOf("month").format("D"));
-  const end = Number(moment().endOf("month").format("D"));
-  const days = numberRange(start, end);
-
+const CalendarView = ({
+  stories,
+  chosenDay,
+  setChosenDay,
+}: {
+  stories: Array<Story>;
+  chosenDay: string;
+  setChosenDay: any;
+}) => {
+  const start = moment().startOf("month").format("DD-MM-YY");
+  const end = moment().endOf("month").format("DD-MM-YY");
+  const days: Array<string> = datesRange(start, end);
   return (
     <View style={styles.container}>
-      {days.map((date) => (
-        <CalendarDate
-          key={date}
-          date={date + ""}
-          picked={date == chosenDay}
-          setDay={(d: number) => setChosenDay(d)}
-        />
-      ))}
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Calendar</Text>
+      </View>
+      <View style={styles.calendarContainer}>
+        <View style={styles.calendarWrapper}>
+          {days.map((date) => (
+            <CalendarDateView
+              key={getNumberFromDate(date)}
+              date={date}
+              picked={date + "" === chosenDay + ""}
+              setDay={(d: number) => setChosenDay(d)}
+            />
+          ))}
+        </View>
+      </View>
     </View>
   );
 };
@@ -30,11 +43,24 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
-    flexDirection: "row",
-    flexWrap: "wrap",
+  },
+  titleContainer: {
+    padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 25,
+  },
+  calendarContainer: {
+    width: "100%",
+    padding: 10,
+  },
+  calendarWrapper: {
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    padding: 10,
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
 });
 

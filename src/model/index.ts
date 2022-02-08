@@ -2,7 +2,7 @@ export interface Story {
   id: number;
   author: string;
   score: number;
-  time: number;
+  time: number | string;
   title: string;
   type: string;
   url: string;

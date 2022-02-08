@@ -8,34 +8,13 @@ import {
 } from "react-native";
 import StoryView from "../../component/StoryView";
 import { Story } from "../../model";
-import { fetchStories } from "./service/service";
 import { MainContext } from "../helper/context/MainContextProvider";
 
 export const HomePage = () => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const { storiesData: stories, setStoriesData } = useContext(MainContext);
-  const updateStories = async () => {
-    setLoading(true);
-    const stories: Array<Story> = await fetchStories();
-    setStoriesData(stories);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    updateStories();
-  }, []);
+  const { storiesData: stories } = useContext(MainContext);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        {loading && (
-          <ActivityIndicator
-            size={"large"}
-            animating={true}
-            color={"##FF6600"}
-          />
-        )}
-      </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {stories.map((story: Story) => (
           <StoryView key={story.id} story={story} />

@@ -1,5 +1,5 @@
-import { Job } from "../../../model/index";
-import { requestApi } from "../../../commons/Api";
+import { Job } from "../../model/index";
+import { requestApi } from "../Api";
 
 export const fetchJobs = async (): Promise<Job[]> => {
   const ids = await requestApi("v0/jobstories.json", "GET", {});

@@ -1,5 +1,5 @@
-import { Story, TopStories } from "../../../model/index";
-import { requestApi } from "../../../commons/Api";
+import { Story } from "../../model/index";
+import { requestApi } from "../Api";
 
 export const fetchStories = async (): Promise<Story[]> => {
   const ids = await requestApi("v0/topstories.json", "GET", {});

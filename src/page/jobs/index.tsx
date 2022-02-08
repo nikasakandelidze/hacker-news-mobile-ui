@@ -1,36 +1,13 @@
-import { View, StyleSheet, ScrollView, ActivityIndicator } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
-import { fetchJobs } from "./service/service";
-import { Job } from "../../model";
+import { View, StyleSheet, ScrollView } from "react-native";
+import React, { useContext } from "react";
 import JobView from "../../component/JobView";
 import { MainContext } from "../helper/context/MainContextProvider";
 
 const Jobs = () => {
-  const { jobsData: jobs, setJobsData } = useContext(MainContext);
-  const [loading, setLoading] = useState<boolean>(false);
-
-  const updateJobs = async () => {
-    setLoading(true);
-    const jobs: Array<Job> = await fetchJobs();
-    setJobsData(jobs);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    updateJobs();
-  }, []);
+  const { jobsData: jobs } = useContext(MainContext);
 
   return (
     <View style={styles.container}>
-      <View>
-        {loading && (
-          <ActivityIndicator
-            size={"large"}
-            animating={true}
-            color={"##FF6600"}
-          />
-        )}
-      </View>
       <ScrollView>
         {jobs.map((job) => (
           <JobView key={job.id} job={job} />

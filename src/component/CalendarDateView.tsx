@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { getNumberFromDate } from "../utils";
 
-const CalendarDate = ({
+const CalendarDateView = ({
   date,
   picked,
   setDay,
@@ -17,7 +18,9 @@ const CalendarDate = ({
       style={[styles.container, picked ? styles.picked : {}]}
     >
       <View>
-        <Text style={[picked ? styles.pickedTextColor : {}]}>{date}</Text>
+        <Text style={[picked ? styles.pickedTextColor : {}]}>
+          {getNumberFromDate(date)}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -25,8 +28,6 @@ const CalendarDate = ({
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: "black",
-    borderWidth: 1,
     borderRadius: 50,
     margin: 7,
     padding: 5,
@@ -34,6 +35,7 @@ const styles = StyleSheet.create({
     height: 35,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "white",
   },
   picked: {
     backgroundColor: "#3B49DF",
@@ -43,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalendarDate;
+export default CalendarDateView;
