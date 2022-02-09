@@ -3,7 +3,7 @@ import Animated, {
   withTiming,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { StyleSheet, ScrollView, Platform } from "react-native";
+import { StyleSheet, ScrollView, Platform, Dimensions } from "react-native";
 import React, { useContext, useEffect } from "react";
 import { MainContext } from "../page/helper/context/MainContextProvider";
 import SearchResultView from "./SearchResultView";
@@ -14,7 +14,7 @@ const SearchResult = ({ input, show }: { input: string; show: boolean }) => {
 
   useEffect(() => {
     if (height.value == 0 && show) {
-      height.value = 400;
+      height.value = 0.5 * Dimensions.get("window").height;
     } else {
       height.value = 0;
     }
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     height: 0,
     marginTop: Platform.OS == "android" ? 0 : 0,
     width: "100%",
-    backgroundColor: "#6886C5",
+    backgroundColor: "#DAE7EF",
   },
   scrollViewContainer: {
     padding: 20,

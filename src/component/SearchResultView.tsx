@@ -6,9 +6,9 @@ import {
   Linking,
 } from "react-native";
 import React from "react";
-import { Job } from "../model/index";
+import { Job, Story } from "../model/index";
 
-const SearchResultView = ({ item }: { item: Job }) => {
+const SearchResultView = ({ item }: { item: Job | Story }) => {
   const openUrl = async (url: string) => {
     const supported = await Linking.canOpenURL(url);
 
